@@ -12,3 +12,60 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+//if KBD !=0 black;
+(LOOP)
+@KBD
+D=M
+@BLACK
+D;JNE
+@WHITE
+D;JEQ
+@LOOP
+0;JMP
+
+(BLACK)
+@SCREEN
+D=A
+@i
+M=D
+
+(BLACKLOOP)
+//if i==KBD goto LOOP
+@i
+D=M
+@KBD
+D=D-A
+@LOOP
+D;JEQ
+
+@i
+A=M
+M=-1
+@i
+M=M+1
+@BLACKLOOP
+0;JMP
+
+(WHITE)
+@SCREEN
+D=A
+@i
+M=D
+
+(WHITELOOP)
+//if i==KBD goto LOOP
+@i
+D=M
+@KBD
+D=D-A
+@LOOP
+D;JEQ
+
+@i
+A=M
+M=0
+@i
+M=M+1
+@WHITELOOP
+0;JMP
